@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule} from '@angular/core';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { WeatherComponent } from './weather/weather.component';
@@ -11,11 +11,15 @@ import { Weather1Component } from './weather1/weather1.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Weather2Component } from './weather2/weather2.component';
 import { Weather3Component } from './weather3/weather3.component';
+import { WeatherhomeComponent } from './weatherhome/weatherhome.component';
+import { Weather4Component } from './weather4/weather4.component';
+import { Weather5Component } from './weather5/weather5.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule, LineChartModule } from '@swimlane/ngx-charts';
 import { FlexLayoutModule } from "@angular/flex-layout";
 
 
+// copy this line for angular materials
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -53,9 +57,8 @@ import {
   MatTooltipModule,
   MatTreeModule
 } from '@angular/material';
-import { WeatherhomeComponent } from './weatherhome/weatherhome.component';
-import { Weather4Component } from './weather4/weather4.component';
-import { Weather5Component } from './weather5/weather5.component';
+
+// and add them to imports
 
 @NgModule({
   declarations: [
