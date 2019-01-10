@@ -52,10 +52,11 @@ export class Weather4Component implements OnInit {
       
     })
   }
+  
   onSelect (e) {
     
   }  
-  
+
 
   mapGraphData(dataInfo) {
 

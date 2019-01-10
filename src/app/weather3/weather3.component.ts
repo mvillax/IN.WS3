@@ -93,6 +93,7 @@ export class Weather3Component implements OnInit {
       })
   }
 
+
   onSelect (e) {
 
   }  
