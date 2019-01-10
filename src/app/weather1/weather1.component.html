@@ -1,0 +1,42 @@
+<div>
+  <h3>Weather info</h3>
+  <!-- {{weatherInfo | json}}  -->
+  <div *ngIf="weatherInfo">
+    <table style="with:100%">
+      <tr>
+        <th>
+          Temperature Cº
+        </th>
+        <th>
+          Pressure
+        </th>
+        <th>
+          Humidity %
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+      <tr *ngFor="let item of weatherInfo.list">
+        <td>
+          {{item.main.temp}}
+        </td>
+        <td>
+          {{item.main.pressure}}
+        </td>
+        <td>
+          {{item.main.humidity}}
+        </td>
+        <td>
+          {{item.dt_txt}}
+        </td>
+        <td >
+          <!-- another array - another ngFor -->
+          <div *ngFor="let hourreport of item.weather">{{hourreport.description}}</div>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+  
+</div>

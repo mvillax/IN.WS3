@@ -1,0 +1,123 @@
+
+    <div *ngIf="weatherInfo" class="container" fxLayout="column" fxLayoutGap="20px">
+      <mat-card >
+        <mat-card-content style="margin:20px">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.xs="row"  fxLayoutGap="10px">
+            <div fxFlex>
+              <mat-form-field class="example-full-width">
+                <input matInput type="text" placeholder="enter city"  [(ngModel)]="city"/>
+              </mat-form-field>
+              <button style="margin-left:10px" (click)="getData()" type="button" mat-raised-button >Fetch data</button>
+            </div>
+            <div fxFlex fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="">
+              <h1>{{weatherInfo.city.name}} - {{weatherInfo.city.country}}</h1>
+              <h3><p><span>Population: {{weatherInfo.city.population}}</span></p></h3>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <div      
+        fxLayout="row"
+        fxLayout.lt-lg="column"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-around center" 
+        fxLayoutGap.xs="0">
+
+        <ngx-charts-line-chart 
+            fxFlex="33%"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="temperatureData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [timeline]="true"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [timeline]="timeline"
+            (select)="onSelect($event)">
+          </ngx-charts-line-chart>
+      
+          <ngx-charts-line-chart
+            fxFlex="33%"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="humidityData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [timeline]="timeline"
+            (select)="onSelect($event)">
+          </ngx-charts-line-chart>
+
+          <ngx-charts-area-chart
+            fxFlex="33%"
+            [view]="view"
+            [scheme]="colorScheme"
+            [results]="pressureData"
+            [gradient]="gradient"
+            [xAxis]="showXAxis"
+            [yAxis]="showYAxis"
+            [legend]="showLegend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [autoScale]="autoScale"
+            [timeline]="timeline"
+            (select)="onSelect($event)">
+          </ngx-charts-area-chart>
+      </div>
+      <div 
+        fxLayout.lt-lg="column"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-around center" 
+        fxLayoutGap.xs="0"
+        *ngIf="weatherInfo">
+        <table style="width:80%">
+          <tr>
+            <th>
+            {{item | json}} 
+              Temperature Cº
+            </th>
+            <th>
+              Pressure
+            </th>
+            <th>
+              Humidity %
+            </th>
+            <th>
+              Date
+            </th>
+          </tr>
+          <tr *ngFor="let item of weatherInfo.list">
+            <td [ngClass]="selectClass(item.main.temp)">
+            {{selectClass(item.main.temp)}}
+              {{item.main.temp}}
+            </td>
+            <td>
+              {{item.main.pressure}}
+            </td>
+            <td>
+              {{item.main.humidity}}
+            </td>
+            <td>
+              {{item.dt_txt}}
+            </td>
+            <td >
+              <div *ngFor="let hourreport of item.weather">{{hourreport.description}}</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
